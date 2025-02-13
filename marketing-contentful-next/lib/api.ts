@@ -1,11 +1,11 @@
 import { createClient } from 'contentful';
 
-import {
-  AudienceEntryLike,
-  AudienceMapper,
-  ExperienceEntryLike,
-  ExperienceMapper,
-} from '@ninetailed/experience.js-utils-contentful';
+// import {
+//   AudienceEntryLike,
+//   AudienceMapper,
+//   ExperienceEntryLike,
+//   ExperienceMapper,
+// } from '@ninetailed/experience.js-utils-contentful';
 
 import {
   type TypePdpSkeleton,
@@ -146,44 +146,44 @@ export async function getGlobalConfig(QueryParams: IQueryParams) {
 
 // For the preview widget
 
-export async function getAllExperiences(QueryParams: IQueryParams) {
-  const query = {
-    content_type: 'nt_experience',
-    include: 1 as Include,
-  };
+// export async function getAllExperiences(QueryParams: IQueryParams) {
+//   const query = {
+//     content_type: 'nt_experience',
+//     include: 1 as Include,
+//   };
 
-  const client = getClient(QueryParams.preview as boolean);
+//   const client = getClient(QueryParams.preview as boolean);
 
-  const entries =
-    await client.withoutUnresolvableLinks.getEntries<TypeNt_experienceSkeleton>(
-      query
-    );
-  const experiences = entries.items as ExperienceEntryLike[];
+//   const entries =
+//     await client.withoutUnresolvableLinks.getEntries<TypeNt_experienceSkeleton>(
+//       query
+//     );
+//   const experiences = entries.items as ExperienceEntryLike[];
 
-  const mappedExperiences = (experiences || [])
-    .filter((entry) => ExperienceMapper.isExperienceEntry(entry))
-    .map((entry) => ExperienceMapper.mapExperience(entry));
+//   const mappedExperiences = (experiences || [])
+//     .filter((entry) => ExperienceMapper.isExperienceEntry(entry))
+//     .map((entry) => ExperienceMapper.mapExperience(entry));
 
-  return mappedExperiences;
-}
+//   return mappedExperiences;
+// }
 
-export async function getAllAudiences(QueryParams: IQueryParams) {
-  const query = {
-    content_type: 'nt_audience',
-    include: 0 as Include,
-  };
+// export async function getAllAudiences(QueryParams: IQueryParams) {
+//   const query = {
+//     content_type: 'nt_audience',
+//     include: 0 as Include,
+//   };
 
-  const client = getClient(QueryParams.preview as boolean);
+//   const client = getClient(QueryParams.preview as boolean);
 
-  const entries =
-    await client.withoutUnresolvableLinks.getEntries<TypeNt_audienceSkeleton>(
-      query
-    );
-  const audiences = entries.items as AudienceEntryLike[];
+//   const entries =
+//     await client.withoutUnresolvableLinks.getEntries<TypeNt_audienceSkeleton>(
+//       query
+//     );
+//   const audiences = entries.items as AudienceEntryLike[];
 
-  const mappedAudiences = (audiences || [])
-    .filter((entry) => AudienceMapper.isAudienceEntry(entry))
-    .map((entry) => AudienceMapper.mapAudience(entry));
+//   const mappedAudiences = (audiences || [])
+//     .filter((entry) => AudienceMapper.isAudienceEntry(entry))
+//     .map((entry) => AudienceMapper.mapAudience(entry));
 
-  return mappedAudiences;
-}
+//   return mappedAudiences;
+// }
